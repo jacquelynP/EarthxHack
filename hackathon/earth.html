@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #f1f1f1;
+        }
+
+        .gameWindow {
+            position: relative;
+            padding: 20px;
+            height: 500px;
+            background: white;
+        }
+
+        .containerItem {
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            background-color: white;
+            width: 50px;
+        }
+
+
+        .recycle,
+        .trash {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: transparent url("assets/img/recycle.jpg") center center no-repeat;
+            background-size: contain;
+            height: 342px;
+            width: 342px;
+        }
+
+        .trash {
+            left: initial;
+            right: 0;
+            background-image: url("assets/img/trash.jpg");
+        }
+
+        .gameWindow {
+            background-color: #ddd;
+        }
+
+        button#newrecycle,
+        button.recycleClassName {
+            border: 1px solid rgb(5, 0, 0);
+            background: teal;
+            color: #fff;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+    <!-- onload="startGame()" -->
+
+    <div class="gameWindow">
+        <img src="assets/img/clear.gif" class="containerItem" />
+        <div id="trashContainer" class="trash"></div>
+        <div id="recycleContainer" class="recycle"></div>
+    </div>
+    <button id="newRefuse">Refuse Me!</button>
+   
+    <div style="text-align:center;width:480px;">
+
+        <!-- img src ="https://cdn1.vectorstock.com/i/1000x1000/90/20/cartoon-paper-trash-can-vector-22919020.jpg" alt ="pc" style ="position:fixed; top: 180px; left: 5px;width: 90px; height: 100px"/>
+    <img src ="https://images-na.ssl-images-amazon.com/images/I/8144M%2Buy2IL._SX342_.jpg" alt ="pc" style ="position:fixed; top: 180px; left: 410px;width: 90px; height: 100px" /> 
+<button onmousedown="moveleft()" onmouseup="stopMove()" ontouchstart="moveleft()">LEFT</button>
+<button onmousedown="moveright()" onmouseup="stopMove()" ontouchstart="moveright()">RIGHT</button -->
+
+    </div>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            // r - 82
+            // t - 84
+            isRecycleKey = event.keyCode == 82
+            isTrashKey = event.keyCode == 84
+            if((isRecycleKey && newRefuse['type'] == 'recycle') || (isTrashKey && newRefuse['type'] == 'trash')) {
+                score++;
+            } else {
+                score--;
+            }
+            alert(score);
+        });
+    </script>
+
+    <script type="text/javascript" src="assets/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+
+</html>

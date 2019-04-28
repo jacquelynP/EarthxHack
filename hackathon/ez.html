@@ -1,0 +1,609 @@
+<html><head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="https://www.kirupa.com/favicon_new.png">
+        <link rel="apple-touch-icon" href="https://www.kirupa.com/favicon_ios.png">
+        <link rel="alternate" type="application/rss+xml" title="kirupa.com Updates" href="https://www.kirupa.com/modular/kirupa.xml">
+        
+        <meta property="og:site_name" content="kirupa.com">
+        <meta property="fb:admins" content="700218">
+        <meta property="og:type" content="article">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#0099fe">
+        <link rel="manifest" href="/manifest.json">
+        <meta content="canvas, mouse, follow, requestanimationframe, getposition" name="keywords">
+        <meta content="Learn how to draw something on the canvas that follows your mouse around." name="description">
+        <meta content="Follow the Mouse Cursor | KIRUPA" name="title">
+        <title>Follow the Mouse Cursor | KIRUPA<script type="text/javascript" async="" src="https://forum.kirupa.com/javascripts/embed.js"></script></title>
+        <meta name="author" content="Kirupa Chinnathambi">
+        <link href="https://www.kirupa.com/ssi/newDesign/kirupa_html5.css" rel="stylesheet" type="text/css">
+        <meta property="og:title" content="Follow the Mouse Cursor">
+        <meta property="og:url" content="https://www.kirupa.com/canvas/follow_mouse_cursor.htm">
+        <meta property="og:image" content="https://www.kirupa.com/canvas/images/circle_no_redraw_144.png">
+        <meta property="og:description" content="Learn how to draw something on the canvas that follows your mouse around.">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@kirupa">
+        <meta name="twitter:creator" content="@kirupa">
+        <meta name="twitter:title" content="Follow the Mouse Cursor">
+        <meta name="twitter:description" content="Learn how to draw something on the canvas that follows your mouse around.">
+        <meta name="twitter:image:src" content="https://www.kirupa.com/canvas/images/circle_no_redraw_144.png">
+        <style>
+            #myCanvas {
+              border: #333 10px solid;
+            }
+            #canvasContainer {
+                margin: 0 auto;	
+            }
+        </style>
+        </head>
+        <body data-type="canvas">
+        <div id="navigationSlider" class="hidden">
+        <ul id="mobileNavItems">
+        <li><a id="animationMobileLink" href="//www.kirupa.com/learn/index.htm">Learn</a></li>
+        
+        <li><a id="bookMobileLink" href="//www.kirupa.com/book/index.htm">Books</a></li>
+        <li><a id="forumMobileLink" href="http://forum.kirupa.com/">Forums</a></li>
+        <li></li>
+        </ul>
+        </div>
+        <div id="miniHeader" class="miniHidden">
+        <div id="miniHeaderContent">
+        <div id="miniLogo"> <a href="https://www.kirupa.com"><img alt="The KIRUPA logo!" src="https://www.kirupa.com/images/orange_logo.svg"></a>
+        </div>
+        <div id="miniShare">
+        <div class="addthis_sharing_toolbox"></div>
+        </div>
+        <div id="miniHelp">
+        <a href="http://forum.kirupa.com">GET HELP</a>
+        </div>
+        </div>
+        </div>
+        <div id="mobileHeader">
+        <ul>
+        <li>
+        <a href="//www.kirupa.com">
+        <img id="mobileLogo" alt="kirupa.com logo!" src="//www.kirupa.com/images/orange_logo_svg.svg">
+        </a>
+        </li>
+        <li>
+        <img id="navMobile" alt="kirupa.com logo!" src="//www.kirupa.com/ssi/newDesign/nav_rows.svg" width="24">
+        </li>
+        </ul>
+        </div>
+        <div id="headerContainer">
+        <div id="headerContent">
+        <ul>
+        <li><a href="https://www.kirupa.com"><img src="//www.kirupa.com/images/orange_logo_svg.svg" alt="KIRUPA logo"></a></li>
+        <li id="searchLink" class="mainItems firstItem"><a href="http://forum.kirupa.com"><img width="16" src="//www.kirupa.com/images/help.svg" alt=""></a></li>
+        <li id="tutorialsLink" class="mainItems textItem"><a href="https://www.kirupa.com/learn/index.htm">LEARN</a></li>
+        <li id="bookLink" class="mainItems textItem"><a href="https://www.kirupa.com/book/index.htm">BOOKS</a></li>
+        <li id="forumLink" class="mainItems textItem"><a href="http://forum.kirupa.com">FORUM</a></li>
+        <li class="mainItems headerIcon"><a href="https://www.facebook.com/kirupa" target="_blank"><img src="//www.kirupa.com/images/fb_svg.svg" alt=""></a></li>
+        <li class="mainItems headerIcon"><a href="https://www.twitter.com/kirupa"><img src="//www.kirupa.com/images/twitter_svg.svg" alt=""></a></li>
+        <li id="searchArea">
+        <form action="/searchresults.htm" method="get" style="margin-bottom: 0px">
+        <input id="sbi" class="inputTextStyle" name="q" size="20" role="textbox" aria-autocomplete="list" aria-haspopup="true" type="text">
+        <button id="searchButton" type="submit">GO</button>
+        </form>
+        </li>
+        </ul>
+        </div>
+        </div>
+        <div id="mainBody">
+        <div id="mainContent">
+        <div id="tutorialInformation">
+        <div class="authorImage">
+        <a href="//www.kirupa.com/me/index.htm">
+        <img alt="Look, it's a kirupa!!!" src="//www.kirupa.com/ssi/newDesign/kirupa_me.png"></a></div>
+        <div class="authorText">
+        <h1>Follow the Mouse Cursor</h1>
+        <p class="tutorialInfo">by <a href="//www.kirupa.com/me/index.htm">kirupa</a>&nbsp;&nbsp; |&nbsp;&nbsp; 11 December 2015</p>
+        </div>
+        </div>
+        <div id="tutorialBox">
+        </div>
+        <p>In the previous article, we looked at some boring things about <a href="working_with_the_mouse.htm" class="blueEmphasis">working with the mouse</a> in our code. In this tutorial, we will start to apply some of the things we learned by creating a simple "mouse follow" example. It looks a bit like this:</p>
+        <div id="canvasContainer"><canvas id="myCanvas" width="550px" height="350px"></canvas></div>
+        <script>
+            var canvas = document.querySelector("#myCanvas");
+            var context = canvas.getContext("2d");
+        
+            var canvasPos = getPosition(canvas);
+            var mouseX = 0;
+            var mouseY = 0;
+        
+            canvas.addEventListener("mousemove", setMousePosition, false);
+        
+            function setMousePosition(e) {
+              mouseX = e.clientX - canvasPos.x;
+              mouseY = e.clientY - canvasPos.y;
+        
+              context.clearRect(0, 0, canvas.width, canvas.height);
+        
+              context.beginPath();
+              context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI, true);
+              context.fillStyle = "#FF6A6A";
+              context.fill();
+            }
+        
+            function update() {
+              context.clearRect(0, 0, canvas.width, canvas.height);
+        
+              context.beginPath();
+              context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI, true);
+              context.fillStyle = "#FF6A6A";
+              context.fill();
+        
+              requestAnimationFrame(update);
+            }
+            update();
+        
+            // deal with the page getting resized or scrolled
+            window.addEventListener("scroll", updatePosition, false);
+            window.addEventListener("resize", updatePosition, false);
+        
+            function updatePosition() {
+              canvasPos = getPosition(canvas);
+            }
+        
+            // Helper function to get an element's exact position
+            function getPosition(el) {
+              var xPos = 0;
+              var yPos = 0;
+            
+              while (el) {
+                if (el.tagName == "BODY") {
+                  // deal with browser quirks with body/window/document and page scroll
+                  var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
+                  var yScroll = el.scrollTop || document.documentElement.scrollTop;
+            
+                  xPos += (el.offsetLeft - xScroll + el.clientLeft);
+                  yPos += (el.offsetTop - yScroll + el.clientTop);
+                } else {
+                  // for all other non-BODY elements
+                  xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+                  yPos += (el.offsetTop - el.scrollTop + el.clientTop);
+                }
+            
+                el = el.offsetParent;
+              }
+              return {
+                x: xPos,
+                y: yPos
+              };
+            }
+          </script>
+        <p>Move your mouse cursor over the gray area to see the red circle follow your movements. In the following sections, you'll learn all about how to make something like this work...and then some!</p>
+        <p>Onwards!</p>
+        <div id="canvasBookContent" class="bookContent">
+        <div id="bookImage"> <a href="http://www.amazon.com/gp/product/1523978090?redirect=true&amp;tag=kirupacom" target="_blank"><img src="https://www.kirupa.com/book/images/canvas.gif" width="150"></a>
+        </div>
+        <div id="bookContent">
+        <h4>OMG! A Canvas Book Written by Kirupa?!!</h4>
+        <p>To kick your canvas skills up a few notches, everything you see here and more (with all its casual clarity!) is available in both paperback and digital editions.</p>
+        <a href="http://www.amazon.com/gp/product/1523978090?redirect=true&amp;tag=kirupacom" target="_blank" class="greenButton">BUY ON AMAZON</a>
+        </div>
+        </div>
+        <h2>The Basic Approach</h2>
+        <p>Before we get to the code, let's talk using English how we are going to make the circle follow our mouse. First, we all know that we need to draw <strong><em>something</em></strong>, and that <em><strong>something</strong></em> will be a circle in our case:</p>
+        <p class="centerImageNoBorder"><img src="images/circle_scale_144.png" width="400" height="278" alt=""> </p>
+        <p>Second, our circle is not going to be loitering around a single location inside our <span class="inlineCode">canvas</span>. Our circle's position will change based on where exactly our mouse cursor is at any given time. This means that we need to redraw our circle each time the mouse position changes:</p>
+        <p>&nbsp;</p>
+        <p class="centerImageNoBorder"><img src="images/circle_position_changing_144.png" width="470" height="100" alt=""></p>
+        <p>&nbsp;</p>
+        <p>You put these two things together, you have the example that you see. Now, as you may have imagined going into this section, this example isn't a particularly hard one to wrap your head around. That doesn't mean there is nothing exciting going on behind the scenes, though. When we look at the JavaScript in the next few sections, we'll touch upon some things that you may not have realized were relevant for this example.</p>
+        <h3>Getting Started</h3>
+        <p>You probably know the drill by now, but the first thing we need is an HTML page with a canvas element ready to run. If you don't already have a page ready, then put the following into a blank HTML page:</p>
+        <div><div id="highlighter_644643" class="syntaxhighlighter nogutter kirupa_code html"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="html plain">&lt;!DOCTYPE html&gt;</code></div><div class="line number2 index1 alt1"><code class="html plain">&lt;</code><code class="html keyword">html</code><code class="html plain">&gt;</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="html plain">&lt;</code><code class="html keyword">head</code><code class="html plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="html spaces">&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">title</code><code class="html plain">&gt;Canvas Follow Mouse&lt;/</code><code class="html keyword">title</code><code class="html plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="html spaces">&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">style</code><code class="html plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">canvas {</code></div><div class="line number8 index7 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">border: #333 10px solid;</code></div><div class="line number9 index8 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">body {</code></div><div class="line number12 index11 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">padding: 50px;</code></div><div class="line number13 index12 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">}</code></div><div class="line number14 index13 alt1"><code class="html spaces">&nbsp;&nbsp;</code><code class="html plain">&lt;/</code><code class="html keyword">style</code><code class="html plain">&gt;</code></div><div class="line number15 index14 alt2"><code class="html plain">&lt;/</code><code class="html keyword">head</code><code class="html plain">&gt;</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="html plain">&lt;</code><code class="html keyword">body</code><code class="html plain">&gt;</code></div><div class="line number18 index17 alt1"><code class="html spaces">&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">canvas</code> <code class="html color1">id</code><code class="html plain">=</code><code class="html string">"myCanvas"</code> <code class="html color1">width</code><code class="html plain">=</code><code class="html string">"550px"</code> <code class="html color1">height</code><code class="html plain">=</code><code class="html string">"350px"</code><code class="html plain">&gt;&lt;/</code><code class="html keyword">canvas</code><code class="html plain">&gt;</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="html spaces">&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">script</code><code class="html plain">&gt;</code></div><div class="line number21 index20 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">var canvas = document.querySelector("#myCanvas");</code></div><div class="line number22 index21 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">var context = canvas.getContext("2d");</code></div><div class="line number23 index22 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number24 index23 alt1"><code class="html spaces">&nbsp;&nbsp;</code><code class="html plain">&lt;/</code><code class="html keyword">script</code><code class="html plain">&gt;</code></div><div class="line number25 index24 alt2">&nbsp;</div><div class="line number26 index25 alt1"><code class="html plain">&lt;/</code><code class="html keyword">body</code><code class="html plain">&gt;</code></div><div class="line number27 index26 alt2">&nbsp;</div><div class="line number28 index27 alt1"><code class="html plain">&lt;/</code><code class="html keyword">html</code><code class="html plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+        <p>If you preview this page in your browser, you'll notice that there really isn't much going on here. There is a <span class="inlineCode">canvas</span> element, and this element has the <strong>id</strong> value of <strong>myCanvas</strong>. As a timesaver, I provide you with the two lines of code needed to access the <span class="inlineCode">canvas</span> element and its rendering context. If all of this is new to you, take a few moments and review the <a href="//www.kirupa.com/canvas/getting_started_canvas.htm" class="blueEmphasis">Getting Started with the Canvas</a> tutorial, for the rest of what you will see will assume you have a basic understanding of how to do things on the <span class="inlineCode">canvas</span>.</p>
+        <h3>Drawing the Circle</h3>
+        <p>The first thing we are going to do is draw our circle. Inside your <span class="inlineCode">script</span> tag, add the following code after where we have the line with the <span class="inlineCode">context</span> variable:</p>
+        <div><div id="highlighter_136842" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">update() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.beginPath();</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.arc(100, 100, 50, 0, 2 * Math.PI, </code><code class="js keyword">true</code><code class="js plain">);</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fillStyle = </code><code class="js string">"#FF6A6A"</code><code class="js plain">;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fill();</code></div><div class="line number6 index5 alt1"><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js plain">update();</code></div></div></td></tr></tbody></table></div></div>
+        <p>All we are doing here is defining a function called <span class="inlineCode">update</span> that contains the code for <a href="//www.kirupa.com/html5/drawing_circles_canvas.htm" class="blueEmphasis">drawing our circle</a>. Note that we not only define the <span class="inlineCode">update</span> function, we also invoke it as well right afterwards. This means that if you test your page in the browser, you will see something that looks as follows:</p>
+        <p class="centerImageNoBorder"><img src="images/circle_temp_144.png" width="540" height="334" alt=""></p>
+        <p>Our circle has a radius of 50 pixels and is positioned at the (100, 100) mark. For now, we are going to keep the position of the circle fixed. That won't last for long as you'll see shortly once we get the mouse position!</p>
+        <h3>Getting the Mouse Position</h3>
+        <p>The next step is where the magic happens. We are going to add the code that deals with the mouse. There are two parts to this code. The first part is listening for the mouse movement on the <span class="inlineCode">canvas</span> element and storing that mouse position somewhere accessible. That is easy. The second part is ensuring our mouse position takes into account the position of our <span class="inlineCode">canvas</span> element. That is less easy, but one we looked at in the <a href="//www.kirupa.com/canvas/working_with_the_mouse.htm" class="blueEmphasis">Working with the Mouse</a> article. We'll tackle both of these parts in the next two sections.</p>
+        <h4>Listening for the Mouse Event</h4>
+        <p>Let's look at the code for the first part...um...first.	Go	ahead and add the following code just above your <span class="inlineCode">update</span> function:</p>
+        <div><div id="highlighter_651876" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code> <code class="js plain">mouseX = 0;</code></div><div class="line number2 index1 alt1"><code class="js keyword">var</code> <code class="js plain">mouseY = 0;</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="js plain">canvas.addEventListener(</code><code class="js string">"mousemove"</code><code class="js plain">, setMousePosition, </code><code class="js keyword">false</code><code class="js plain">);</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="js keyword">function</code> <code class="js plain">setMousePosition(e) {</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseX = e.clientX;</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseY = e.clientY;</code></div><div class="line number9 index8 alt2"><code class="js plain">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+        <p>What this code does is pretty straightforward. We are listening for the <strong>mousemove</strong> event on our <span class="inlineCode">canvas</span> element, and when that event is overheard, we call the <span class="inlineCode">setMousePosition</span> event handler function thingaroo:</p>
+        <div><div id="highlighter_962666" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">setMousePosition(e) {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseX = e.clientX;</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseY = e.clientY;</code></div><div class="line number4 index3 alt1"><code class="js plain">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+        <p>All the <span class="inlineCode">setMousePosition</span> function does is assign the current horizontal and vertical mouse position to the <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> properties. It does that by relying on the <span class="inlineCode">clientX</span> and <span class="inlineCode">clientY</span> properties that the <span class="inlineCode">MouseEvent</span>-based event argument object provides.</p>
+        <h4>Getting the Exact Mouse Position</h4>
+        <p>The mouse position stored by the <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> properties currently only store the position from the <strong>top-left corner of our browser window</strong>. They don't take into account where the <span class="inlineCode">canvas</span> element is located on the page, so the mouse position values we have right now are going to be inaccurate.	That	is not cool.</p>
+        <p>To fix that, we have the <span class="inlineCode">getPosition</span> function that <a href="//www.kirupa.com/canvas/working_with_the_mouse.htm" class="blueEmphasis">we saw earlier</a>:</p>
+        <div><div id="highlighter_933372" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">getPosition(el) {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js keyword">var</code> <code class="js plain">xPosition = 0;</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js keyword">var</code> <code class="js plain">yPosition = 0;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js keyword">while</code> <code class="js plain">(el) {</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">yPosition += (el.offsetTop - el.scrollTop + el.clientTop);</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">el = el.offsetParent;</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js keyword">return</code> <code class="js plain">{</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">x: xPosition,</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">y: yPosition</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">};</code></div><div class="line number14 index13 alt1"><code class="js plain">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+        <p>Add this function towards the bottom of your code below the <span class="inlineCode">update</span> function. You can put this function towards the top if you want, but I generally prefer helper functions like this to be towards the bottom of our code...and out of sight!</p>
+        <p>Anyway, the way you use this function is by passing in the element whose position you are interested in. This function then returns an object containing the x and y position of the element. We will use this function to figure out where our <span class="inlineCode">canvas</span> element is on the page and then adjust our <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> values accordingly.</p>
+        <p>To use the <span class="inlineCode">getPosition</span> function and fix the <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> values, make the following additions and modifications that I've highlighted:</p>
+        <div><div id="highlighter_848723" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2 highlighted"><code class="js keyword">var</code> <code class="js plain">canvasPos = getPosition(canvas);</code></div><div class="line number2 index1 alt1"><code class="js keyword">var</code> <code class="js plain">mouseX = 0;</code></div><div class="line number3 index2 alt2"><code class="js keyword">var</code> <code class="js plain">mouseY = 0;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="js plain">canvas.addEventListener(</code><code class="js string">"mousemove"</code><code class="js plain">, setMousePosition, </code><code class="js keyword">false</code><code class="js plain">);</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="js keyword">function</code> <code class="js plain">setMousePosition(e) {</code></div><div class="line number8 index7 alt1 highlighted"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseX = e.clientX - canvasPos.x;</code></div><div class="line number9 index8 alt2 highlighted"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseY = e.clientY - canvasPos.y;</code></div><div class="line number10 index9 alt1"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div>
+        <p>The <span class="inlineCode">canvasPos</span> variable now stores the position returned by our <span class="inlineCode">getPosition</span> function. In the <span class="inlineCode">setMousePosition</span> event handler, we use the returned x and y values from <span class="inlineCode">canvasPos</span> to adjust the value stored by the <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> variables. Phew!</p>
+        <h3>Moving the Circle</h3>
+        <p>In the previous section, we got the mouse code all setup with the <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> variables storing our mouse's current position inside the <span class="inlineCode">canvas</span>. All that remains is to hook these values up with our drawing code inside the <span class="inlineCode">update</span> function to have our circle's position reflect the mouse position.</p>
+        <p>First, we are going to turn our boring update function into the target of a <span class="inlineCode">requestAnimationFrame</span> callback. This will ensure this function gets sync'ed up with our browser's drawing rate (around 60 times a second). This is a very simple modification. Go ahead and add the following highlighted line towards the bottom of the <span class="inlineCode">update</span> function:</p>
+        <div><div id="highlighter_169485" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">update() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.beginPath();</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.arc(100, 100, 50, 0, 2 * Math.PI, </code><code class="js keyword">true</code><code class="js plain">);</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fillStyle = </code><code class="js string">"#FF6A6A"</code><code class="js plain">;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fill();</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2 highlighted"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">requestAnimationFrame(update);</code></div><div class="line number8 index7 alt1"><code class="js plain">}</code></div><div class="line number9 index8 alt2"><code class="js plain">update();&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+        <p>What we are going to do next is pretty epic. We need to update our circle drawing code to use the <span class="inlineCode">mouseX</span> and <span class="inlineCode">mouseY</span> values instead of using the fixed (100, 100) position that we specified initially. Make the following highlighted change to the <span class="inlineCode">context.arc()</span> call:</p>
+        <div><div id="highlighter_80384" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">update() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.beginPath();</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI, </code><code class="js keyword">true</code><code class="js plain">);</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fillStyle = </code><code class="js string">"#FF6A6A"</code><code class="js plain">;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fill();</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2 highlighted"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">requestAnimationFrame(update);</code></div><div class="line number8 index7 alt1"><code class="js plain">}</code></div><div class="line number9 index8 alt2"><code class="js plain">update();</code></div></div></td></tr></tbody></table></div></div>
+        <p>Once you have made this change, save your HTML document and preview it in your browser. When you move your mouse around the canvas, notice what happens. Our friendly little circle will now follow your mouse cursor around, and you'll see something that looks a bit like this:</p>
+        <p class="centerImageNoBorder"><img src="images/circle_no_redraw_144.png" width="540" height="334" alt=""></p>
+        <p>Your circle is following the mouse position (rock on!), but your circle's earlier positions aren't being cleared out (sigh!). While this creates a cool finger painting effect, that isn't quite what we were going for. The fix is to clear out everything in the <span class="inlineCode">canvas</span> before drawing our circle at its new position, and that is much more simple than it sounds.</p>
+        <p>To make this fix, go ahead and add the following highlighted line of code towards the top of the <span class="inlineCode">update</span> function:</p>
+        <div><div id="highlighter_681746" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">update() {</code></div><div class="line number2 index1 alt1 highlighted"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.clearRect(0, 0, canvas.width, canvas.height);</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.beginPath();</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI, </code><code class="js keyword">true</code><code class="js plain">);</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fillStyle = </code><code class="js string">"#FF6A6A"</code><code class="js plain">;</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fill();</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">requestAnimationFrame(update);</code></div><div class="line number10 index9 alt1"><code class="js plain">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+        <p>The line we added contains a call to the <span class="inlineCode">clearRect</span> method, and this method is responsible for clearing all pixels from a <span class="inlineCode">canvas</span> region. The way we use it is by passing in the dimensions of the region we want to clear, and what we do is pass in the full dimensions of our <span class="inlineCode">canvas</span> to get everything cleared out:</p>
+        <div><div id="highlighter_508686" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">context.clearRect(0, 0, canvas.width, canvas.height);</code></div></div></td></tr></tbody></table></div></div>
+        <p>This ensures that our circle is being drawn onto a blank surface with no traces of earlier draw operations remaining. If you preview your page in your browser at this point, our example should work perfectly.</p>
+        <div class="callout">
+        <h4>Why use requestAnimationFrame?</h4>
+        <p>You may have noticed that all of our drawing-related code is inside the <span class="inlineCode">update</span> function that is looped by the <span class="inlineCode">requestAnimationFrame</span> function. There is no animation going on here. We are just moving our mouse cursor around, and we want to update our circle's position only when the mouse cursor positions. Given all that, why wasn't all of our drawing code inside the <strong>mousemove</strong> event handler instead? That would look something like the following:</p>
+        <div><div id="highlighter_922962" class="syntaxhighlighter nogutter kirupa_code js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">canvas.addEventListener(</code><code class="js string">"mousemove"</code><code class="js plain">, setMousePosition, </code><code class="js keyword">false</code><code class="js plain">);</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="js keyword">function</code> <code class="js plain">setMousePosition(e) {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseX = e.clientX - canvasPos.x;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">mouseY = e.clientY - canvasPos.y;</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.clearRect(0, 0, canvas.width, canvas.height);</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.beginPath();</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI, </code><code class="js keyword">true</code><code class="js plain">);</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fillStyle = </code><code class="js string">"#FF6A6A"</code><code class="js plain">;</code></div><div class="line number12 index11 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">context.fill();</code></div><div class="line number13 index12 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div>
+        <p>If you were to make this change (and get rid of the <span class="inlineCode">update</span> function completely), our example will still work. Our example may even work just as well as our <span class="inlineCode">requestAnimationFrame</span> approach.</p>
+        <p>The reason has to do with us helping our browser not do unnecessary work and doing the "right" thing since our <strong>end goal</strong> is to draw something to the screen. When it comes to drawing things onto the screen, we want to be in-sync with when the browser is ready to paint the pixels. The <strong>mousemove</strong> event has no idea when the browser is ready to draw to the screen, so our event handler will unnecessarily try to force your browser to paint the screen. The only way to avoid that is to do what we did and use the <span class="inlineCode">requestAnimationFrame</span> function.</p>
+        <p>We separated the code for updating our mouse position from the code for actually drawing to the screen. This ensures that we only draw our new circle when the browser is ready. When the circle is about to be drawn, we ensure that the mouse position at that time is as accurate as possible. Win. Win. Win. (Yes, it's a rare triple win situation!)</p>
+        </div>
+        <h2>Conclusion</h2>
+        <p>This all started out as a very simple effect. We just have a circle that follows the mouse around. How complicated could that be? Famous last words in the world of JavaScript!</p>
+        <p>
+        </p><p>If you have a question about this or any other topic, the easiest thing is to drop by <a class="blueEmphasis" href="http://forum.kirupa.com">our forums</a> where a bunch of the friendliest people you'll ever run into will be happy to help you out!</p>
+        <div id="bookPromo" style="display:none">
+        <h3>Did You Like This?</h3>
+        <div id="js101Signature" style="display: none">
+        <ul>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'js101MoreInfo_Signature', 'clicked'])" href="http://www.quepublishing.com/store/javascript-absolute-beginners-guide-9780789758064">MORE INFO</a></li>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'js101BuyNow_Signature', 'clicked'])" href="https://www.amazon.com/exec/obidos/ASIN/0789758067/kirupacom">BUY NOW</a></li>
+        </ul>
+        </div>
+        <div id="animationSignature" style="display: none">
+        <ul>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'animationMoreInfo_Signature', 'clicked'])" href="//www.kirupa.com/book/animation_in_html_css_and_javascript.htm">MORE INFO</a></li>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'animationBuyNow_Signature', 'clicked'])" href="http://www.amazon.com/dp/1502548704?_encoding=UTF8&amp;camp=15041&amp;creative=373501&amp;linkCode=as3&amp;tag=kirupacom">BUY NOW</a></li>
+        </ul>
+        </div>
+        <div id="canvasSignature" style="display: none">
+        <ul>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'canvasMoreInfo_Signature', 'clicked'])" href="https://www.kirupa.com/book/html5_canvas_noob_to_ninja.htm">MORE INFO</a></li>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'canvasBuyNow_Signature', 'clicked'])" href="http://www.amazon.com/gp/product/1523978090?redirect=true&amp;tag=kirupacom">BUY NOW</a></li>
+        </ul>
+        </div>
+        <div id="reactSignature">
+        <ul>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'reactMoreInfo_Signature', 'clicked'])" href="http://www.informit.com/store/learning-react-a-hands-on-guide-to-building-maintainable-9780134546315">MORE INFO</a></li>
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'reactBuyNow_Signature', 'clicked'])" href="https://www.amazon.com/exec/obidos/ASIN/0134546318/kirupacom">BUY NOW</a></li>
+        </ul>
+        </div>
+        </div>
+        <p><a href="https://www.kirupa.com/about/whatiskirupa.htm"><img src="https://www.kirupa.com/images/kirupa_sig.png" width="150" height="65" alt=""></a> </p>
+        <div id="sigNewsletter">
+        <h4>THE KIRUPA NEWSLETTER</h4>
+        <p>Get cool tips, tricks, <span class="strikethrough">selfies</span>, and more...personally hand-delivered to your inbox!</p>
+        <form action="//kirupa.us7.list-manage.com/subscribe/post?u=b0d69bc8873ebf34032eb7796&amp;id=47036a7bd4" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+        <div id="mc_embed_signup_scroll">
+        <p><input class="email" id="mce-EMAIL" name="EMAIL" placeholder="email address" required="" type="email" value=""><input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="SIGN ME UP"> </p>
+        <p>
+        </p>
+        <div style="position: absolute; left: -5000px;">
+        <input name="b_b0d69bc8873ebf34032eb7796_47036a7bd4" tabindex="-1" type="text" value="">
+        </div>
+        <div class="clear">
+        </div>
+        </div>
+        </form>
+        <p class="smallText">( <a class="blueEmphasis" href="http://us7.campaign-archive1.com/home/?u=b0d69bc8873ebf34032eb7796&amp;id=47036a7bd4">View past issues</a> for an idea of what you've been missing out on all this time! )</p>
+        </div>
+        <p> </p>
+        <h2 id="pageComments">GOT A QUESTION?</h2>
+        <div id="pageCommentsImage">
+        <img src="https://www.kirupa.com/images/green_square.svg">
+        </div>
+        <div id="oldComments">
+        <div id="discourse-comments"><iframe src="https://forum.kirupa.com/embed/comments?embed_url=https%3A%2F%2Fwww.kirupa.com%2Fcanvas%2Ffollow_mouse_cursor.htm" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="6294px"></iframe></div>
+        <script type="text/javascript">
+                      DiscourseEmbed = { discourseUrl: 'https://forum.kirupa.com/',
+                                         discourseEmbedUrl: "https://www.kirupa.com" + window.location.pathname.split("?")[0].split("#")[0] };
+        
+                      (function() {
+                        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+                        d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+                        (document.getElementsByTagName('title')[0] || document.getElementsByTagName('title')[0]).appendChild(d);
+                      })();
+                    </script>
+        </div>
+        <p></p>
+        </div>
+        <div id="rightContents">
+        <style>
+            #outerContainer {
+        
+            }
+            #forumListing {
+              width: 250px;
+              padding: 0;
+              margin: 0;
+              margin-top: 30px;
+            }
+            
+            #forumListing li {
+              list-style: none;
+            }
+            #forumListing li p {
+              line-height: 20px;
+              margin-left: -10px;
+            }
+            #forumListing li a {
+              color: #222;
+              font-size: 14px;
+              padding: 5px;
+              padding-left: 40px;
+              display: inline-block;
+              
+              background-image: url("https://www.kirupa.com/icon/1f354.svg");
+              background-repeat: no-repeat;
+              background-size: 20px;
+              background-position: 10px 3px;
+            }
+            #forumListing li a:hover {
+              text-decoration: underline;
+            }
+            #forumListing li p:hover {
+              background-color: #FAFAFA;
+            }
+          </style>
+        <div id="bookBannerContent">
+        <ul>
+        <li class="learningReactRight">
+         <a href="https://www.amazon.com/exec/obidos/ASIN/013484355X/kirupacom"><strong>Learning React:</strong><br>
+        <span class="lessemphasis">A Hands-on Guide</span></a>
+        <ul class="buyNowRight">
+        <li>
+        <a href="https://www.amazon.com/exec/obidos/ASIN/013484355X/kirupacom">BUY</a></li>
+        </ul>
+        </li>
+        <li class="animationRight">
+        <a href="http://shop.oreilly.com/product/0636920050858.do" target="_blank"><strong>Creating</strong><span class="lessemphasis"> Web Animations</span></a>
+        <ul class="buyNowRight">
+        <li>
+        <a href="https://www.amazon.com/exec/obidos/ASIN/1491957514/kirupacom" target="_blank">BUY</a></li>
+        </ul>
+        </li>
+        <li class="js101Right">
+        <a href="http://www.quepublishing.com/store/javascript-absolute-beginners-guide-9780789758064"><strong>JavaScript</strong> <span class="lessemphasis">Absolute Beginner's Guide</span></a>
+        <ul class="buyNowRight">
+        <li>
+        <a href="https://www.amazon.com/exec/obidos/ASIN/0789758067/kirupacom">BUY</a></li>
+        </ul>
+        </li>
+        </ul>
+        <img alt="new books - yay!!!" height="66" src="//www.kirupa.com/images/caption_books.png" width="165">
+        </div>
+        <div id="rightNewsletter">
+        <h4>HOT FORUM TOPICS</h4>
+        <div id="outerContainer">
+        <ul id="forumListing">
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/understanding-webviews/639672" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">Understanding WebViews</a>
+        </p>
+        </li>
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/accessing-your-webcam-in-html5/352092" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">Accessing Your Webcam in HTML5</a>
+        </p>
+        </li>
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/my-deep-learning-article/639659" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">My Deep learning article</a>
+        </p>
+        </li>
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/pwa-vs-react-native/639724" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">PWA vs. React Native</a>
+        </p>
+        </li>
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/react-with-redux-and-a-second-component-need-advice/639722" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">React with Redux AND a second component! Need advice.</a>
+        </p>
+        </li>
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/stop-animation-from-spinning/639702" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">Stop Animation from Spinning</a>
+        </p>
+        </li>
+        
+        <li>
+        <p>
+        <a href="https://forum.kirupa.com/t/the-iphone-setup-experience-is-nice-and-simple/639718" style="background-image: url(&quot;https://www.kirupa.com/icon/1f5e8.svg&quot;);">The iPhone Setup Experience is Nice...and Simple!</a>
+        </p>
+        </li>
+        </ul>
+        </div>
+        <template id="topicRow">
+        <li>
+        <p>
+        <a href="#">Test</a>
+        </p>
+        </li>
+        </template>
+        <script>
+            
+            fetch('https://forum.kirupa.com/latest.json')
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(jsonData) {
+                processResults(jsonData);
+              });
+        
+              var topicArray = [];
+        
+              function processResults(input) {
+                //console.log(input);
+        
+                var topicList = input.topic_list.topics;
+        
+                for (var i = 0; i < 7; i++) {
+                  var topic = topicList[i];
+        
+                  if (topic.pinned == false) {
+                    topicArray.push({
+                      title: topic.title,
+                      count: topic.posts_count,
+                      category: topic.category_id,
+                      urlFrag: topic.slug + "/" + topic.id
+                    });
+                  }
+                }
+        
+                //console.log(topicArray);
+        
+                createDOM();
+              }
+        
+              function createDOM() {
+                // 38 -> flash/as -> flash.svg
+                // 43 -> jobs -> 26f3.svg (golf)
+                // 36 -> random -> 1f379.svg (orange)
+                // 3 -> meta -> 1f441.svg
+                // 41 -> programming -> 1f4be.svg (disk)
+                // 42 -> web dev -> 1f431.svg (cat)
+                // other -> unknown -> 1f354.svg
+                // other
+                var forumParent = document.querySelector("#forumListing");
+                var t = document.querySelector("#topicRow");
+        
+                for (var i = 0; i < topicArray.length; i++) {
+                  var topic = topicArray[i];
+        
+                  var clone = document.importNode(t.content, true);
+        
+                  // set the link
+                  var topicLink = clone.querySelector("a");
+                  topicLink.textContent = topic.title;
+                  topicLink.setAttribute("href", "https://forum.kirupa.com/t/" + topic.urlFrag);
+        
+                  // set the icon
+                  var category = topic.category;
+                  var icon = "https://www.kirupa.com/icon/";
+        
+                  switch(category) {
+                    case 38:
+                        icon += "1f525.svg";
+                        break;
+                    case 43:
+                        icon += "1f4b0.svg";
+                        break;
+                    case 41:
+                        icon += "1f4ac.svg";
+                        break;
+                    case 39:
+                        icon += "1f3a8.svg";
+                        break;
+                    case 42:
+                        icon += "1f4dd.svg";
+                        break;
+                    case 36:
+                        icon += "1f5e8.svg";
+                        break;
+                     case 3:
+                        icon += "1f5fa.svg";
+                        break;
+                    default:
+                      icon += "1f4dd.svg"
+                      break;
+                  }
+        
+                  topicLink.style.backgroundImage = "url(" + icon + ")";
+        
+                  forumParent.appendChild(clone);
+                }
+              }
+        
+            </script>
+        </div>
+        </div>
+        </div>
+        <div id="mainFooter">
+        <div class="footerContents">
+        <div class="leftFooter">
+        <p>Serving you freshly baked content since 1998!</p>
+        <p><a href="https://mediatemple.net/" target="_blank">Killer hosting by (mt) mediatemple</a></p>
+        </div>
+        <div class="rightFooter"> <a href="https://www.facebook.com/kirupa" target="_blank"><img src="https://www.kirupa.com/images/fb_svg.svg" alt="Facebook"></a>
+        <a href="https://www.twitter.com/kirupa" target="_blank"><img src="https://www.kirupa.com/images/twitter_svg.svg" alt="Twitter"></a>
+        <a href="https://www.youtube.com/user/kirupa" target="_blank"><img src="https://www.kirupa.com/images/s/youtube.svg" alt="Youtube"></a>
+        <a href="https://www.pinterest.com/kirupa/" target="_blank"><img src="https://www.kirupa.com/images/s/pinterest.svg" alt="Pinterest"></a>
+        <a href="https://www.instagram.com/kirupac/" target="_blank"><img src="https://www.kirupa.com/images/s/instagram.svg" alt="Instagram"></a>
+        <a href="https://github.com/kirupa/kirupa" target="_blank"><img src="https://www.kirupa.com/images/s/github.svg" alt="Github"></a>
+        </div>
+        </div>
+        </div>
+        <div id="mobileFooter">
+        <div id="topFooter"><a href="#">BACK TO TOP</a></div>
+        <div id="bookBannerContent">
+        <ul>
+        <li class="canvasRight">
+        <a onclick="_gaq.push(['_trackEvent', 'canvasMoreInfo', 'clicked'])" href="https://www.kirupa.com/book/html5_canvas_noob_to_ninja.htm">HTML5 Canvas: From Noob to Ninja</a>
+        <ul class="buyNowRight">
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'canvasBuyNow', 'clicked'])" href="http://www.amazon.com/gp/product/1523978090?redirect=true&amp;tag=kirupacom">BUY NOW</a></li>
+        </ul>
+        </li>
+        <li class="animationRight">
+        <a onclick="_gaq.push(['_trackEvent', 'animationMoreInfo', 'clicked'])" href="//www.kirupa.com/book/animation_in_html_css_and_javascript.htm">Animation in HTML, CSS, and JavaScript</a>
+        <ul class="buyNowRight">
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'animationBuyNow', 'clicked'])" href="http://www.amazon.com/dp/1502548704?_encoding=UTF8&amp;camp=15041&amp;creative=373501&amp;linkCode=as3&amp;tag=kirupacom" target="_blank">BUY NOW</a></li>
+        </ul>
+        </li>
+        <li class="js101Right">
+        <a onclick="_gaq.push(['_trackEvent', 'js101MoreInfo', 'clicked'])" href="http://www.quepublishing.com/store/javascript-absolute-beginners-guide-9780789758064">JavaScript: Absolute Beginner's Guide</a>
+        <ul class="buyNowRight">
+        <li>
+        <a onclick="_gaq.push(['_trackEvent', 'js101BuyNow', 'clicked'])" href="https://www.amazon.com/exec/obidos/ASIN/0789758067/kirupacom">BUY NOW</a></li>
+        </ul>
+        </li>
+        </ul>
+        <img alt="new books - yay!!!" height="66" src="//www.kirupa.com/images/caption_books.png" width="165">
+        </div>
+        <div id="bottomLinks">
+        <h3>Copyright 2018 Kirupa, Inc.</h3>
+        </div>
+        </div>
+        <script async="" src="//www.kirupa.com/ssi/newDesign/kirupa.js"></script>
+        <link href="//www.kirupa.com/ssi/sh/styles/shCore.css" rel="stylesheet" type="text/css">
+        <link href="//www.kirupa.com/ssi/sh/styles/shThemeDefault.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="//www.kirupa.com/ssi/sh/scripts/shCore.js"></script>
+        <script type="text/javascript" src="//www.kirupa.com/ssi/sh/scripts/shBrushJScript.js"></script>
+        <script type="text/javascript" src="//www.kirupa.com/ssi/sh/scripts/shBrushXml.js"></script>
+        <script type="text/javascript" src="//www.kirupa.com/ssi/sh/scripts/shBrushCss.js"></script>
+        
+        <script type="text/javascript">
+             SyntaxHighlighter.defaults['gutter'] = false;
+             SyntaxHighlighter.defaults['toolbar'] = false;
+             SyntaxHighlighter.defaults['class-name'] = 'kirupa_code';
+           SyntaxHighlighter.all();
+        </script>
+        <script>
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+              navigator.serviceWorker.register('/service-worker.js');
+            });
+          }
+        </script>
+        <link href="https://www.kirupa.com/js/prism_v1.css" rel="stylesheet">
+        <script src="https://www.kirupa.com/js/prism_v1.js"></script>
+        
+        </body></html>
